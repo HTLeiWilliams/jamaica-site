@@ -21,9 +21,6 @@
       background: linear-gradient(to right, #00ff99, #00cc66);
       text-align: center;
       padding: 10px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
     nav a {
       margin: 5px 10px;
@@ -43,27 +40,28 @@
       margin: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      scroll-margin-top: 70px;
     }
     img {
       max-width: 100%;
       height: auto;
       margin: 15px 0;
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    /* Quiz Layout Styles */
-    .quiz-container {
+
+    /* --- Clean Planner Layout Styles (No Lag) --- */
+    .planner-section {
       border-top: 6px solid #ffcc00;
     }
-    .quiz-container h3 {
-      color: #00cc66;
-      margin-top: 0;
+    .planner-step { 
+      display: none; 
     }
-    .step { display: none; }
-    .step.active { display: block; }
-    .options { margin: 20px 0; }
-    .option-btn {
+    .planner-step.active { 
+      display: block; 
+    }
+    .planner-options { 
+      margin: 20px 0; 
+    }
+    .planner-btn {
       display: block;
       width: 100%;
       background: #f8f9fa;
@@ -77,17 +75,17 @@
       transition: all 0.2s ease;
       font-family: "Trebuchet MS", sans-serif;
     }
-    .option-btn:hover { background: #eef9f1; border-color: #00cc66; transform: translateY(-2px); }
-    .results-box { background: #fdfdfd; border: 2px dashed #00cc66; padding: 20px; border-radius: 8px; margin-top: 20px; }
-    
-    .result-image-popup {
-      max-width: 100%;
-      max-height: 300px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin: 15px 0;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      display: block;
+    .planner-btn:hover { 
+      background: #eef9f1; 
+      border-color: #00cc66; 
+      transform: translateY(-2px); 
+    }
+    .planner-results { 
+      background: #fdfdfd; 
+      border: 2px dashed #00cc66; 
+      padding: 20px; 
+      border-radius: 8px; 
+      margin-top: 20px; 
     }
     .airline-links a { 
       display: inline-block; 
@@ -100,24 +98,28 @@
       font-weight: bold; 
       font-size: 14px; 
     }
-    .airline-links a:hover { background: #ffcc00; color: #000; }
-    .learn-more-btn {
-      display: inline-block;
-      background: #00cc66;
-      color: white;
-      padding: 10px 18px;
-      margin: 5px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-      border: none;
-      cursor: pointer;
-      font-family: "Trebuchet MS", sans-serif;
+    .airline-links a:hover { 
+      background: #ffcc00; 
+      color: #000; 
     }
-    .learn-more-btn:hover { background: #00a352; }
-    .warning-box { background: #fff3cd; border-left: 5px solid #ffc107; padding: 15px; margin-top: 15px; border-radius: 4px; font-size: 14px; }
-    .reset-btn { background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin-top: 20px; font-family: "Trebuchet MS", sans-serif; }
+    .warning-box { 
+      background: #fff3cd; 
+      border-left: 5px solid #ffc107; 
+      padding: 15px; 
+      margin-top: 15px; 
+      border-radius: 4px; 
+      font-size: 14px; 
+    }
+    .reset-btn { 
+      background: #6c757d; 
+      color: white; 
+      border: none; 
+      padding: 10px 20px; 
+      border-radius: 6px; 
+      cursor: pointer; 
+      margin-top: 20px; 
+      font-family: "Trebuchet MS", sans-serif; 
+    }
   </style>
 </head>
 <body>
@@ -138,13 +140,13 @@
     <a href="#sports">Sports</a>
     <a href="#festivals">Festivals</a>
     <a href="#people">Famous People</a>
-    <a href="#planner" style="background: #ffcc00; color: #222;">Book Trip</a>
+    <a href="#planner">Book Trip</a>
   </nav>
 
   <section id="home">
     <h2>Discover Jamaica</h2>
     <p>Jamaica is a Caribbean island nation celebrated for its vibrant culture, breathtaking scenery, and global influence in music and sports. From reggae rhythms to golden beaches, Jamaica offers a unique blend of history, tradition, and adventure.</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Flag_of_Jamaica.svg" alt="Jamaican Flag">
+    <img src="https://wikimedia.org" alt="Jamaican Flag">
   </section>
 
   <section id="facts">
@@ -157,70 +159,83 @@
       <li>Currency: Jamaican Dollar (JMD)</li>
       <li>Independence: August 6, 1962</li>
     </ul>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Kingston_Jamaica.jpg" alt="Kingston City">
+    <img src="https://wikimedia.org" alt="Kingston City">
   </section>
 
   <section id="history">
     <h2>History</h2>
     <p>Jamaica was originally inhabited by the Taíno people before Christopher Columbus arrived in 1494. Spain colonized the island, but Britain seized it in 1655. Enslaved Africans brought to Jamaica shaped its culture and resilience. Slavery was abolished in 1838, and Jamaica gained independence in 1962. Today, Jamaica is a proud member of the Commonwealth, with a history marked by struggle, triumph, and cultural innovation.</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Spanish_Town_Jamaica.jpg" alt="Spanish Town Square">
+    <img src="https://wikimedia.org" alt="Spanish Town Square">
   </section>
 
   <section id="culture">
     <h2>Culture</h2>
     <p>Jamaica is the birthplace of reggae, ska, and dancehall. The Rastafari movement also began here, influencing music, art, and spirituality worldwide. Festivals like Reggae Sumfest and Carnival showcase the island’s creativity and joy. Jamaican culture is expressed through storytelling, dance, and vibrant art forms.</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Bob-Marley.jpg" alt="Bob Marley">
+    <img src="https://wikimedia.org" alt="Bob Marley">
   </section>
 
   <section id="food">
     <h2>Food</h2>
-    <p>Jamaican cuisine is bold and flavorful. Famous dishes include Ackee and Saltfish (the national dish), spicy Jerk Chicken, and Jamaican Tactics. Tropical fruits like mango, pineapple, and breadfruit are staples. Street food and home cooking alike reflect the island’s diverse heritage.</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Jamaican_Jerk_Chicken.jpg" alt="Jerk Chicken">
+    <p>Jamaican cuisine is bold and flavorful. Famous dishes include Ackee and Saltfish (the national dish), spicy Jerk Chicken, and Jamaican Patties. Tropical fruits like mango, pineapple, and breadfruit are staples. Street food and home cooking alike reflect the island’s diverse heritage.</p>
+    <img src="https://wikimedia.org" alt="Jerk Chicken">
   </section>
 
   <section id="nature">
     <h2>Nature</h2>
     <p>Jamaica’s landscapes range from the Blue Mountains to lush rainforests and waterfalls. Dunn’s River Falls is a famous natural attraction, while the island’s biodiversity includes hummingbirds, coral reefs, and unique plants. Nature lovers find endless adventures here.</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Dunns_River_Falls_Jamaica.jpg" alt="Dunn’s River Falls">
+    <img src="https://wikimedia.org" alt="Dunn’s River Falls">
   </section>
 
   <section id="beaches">
     <h2>Beaches</h2>
     <p>Jamaica’s coastline is dotted with stunning beaches. Negril’s Seven Mile Beach is famous for sunsets, while Doctor’s Cave Beach in Montego Bay is known for clear waters. Frenchman’s Cove and Treasure Beach offer serene escapes.</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Negril_Beach_Jamaica.jpg" alt="Negril Beach">
+    <img src="https://wikimedia.org" alt="Negril Beach">
   </section>
 
   <section id="landmarks">
     <h2>Popular Landmarks</h2>
     <p>Historic and cultural landmarks include Devon House, Rose Hall Great House, and the Bob Marley Museum. Spanish Town Square and the National Gallery of Jamaica highlight the island’s heritage and artistic achievements.</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Devon_House_Jamaica.jpg" alt="Devon House">
+    <img src="https://wikimedia.org" alt="Devon House">
   </section>
 
   <section id="sports">
     <h2>Sports</h2>
     <p>Jamaica is world‑renowned for athletics, producing sprinters like Usain Bolt and Shelly‑Ann Fraser‑Pryce. Cricket and football are also popular, with sports serving as a source of national pride and global recognition.</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Usain_Bolt_2012_Olympics.jpg" alt="Usain Bolt">
+    <img src="https://wikimedia.org" alt="Usain Bolt">
   </section>
 
   <section id="festivals">
     <h2>Festivals</h2>
     <p>Jamaica celebrates life with vibrant festivals. Reggae Sumfest in Montego Bay is the world’s biggest reggae festival. Carnival brings colorful parades to Kingston. Independence Day on August 6 is marked with national pride, while Bob Marley’s birthday is celebrated every February.</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Reggae_Sumfest.jpg" alt="Reggae Sumfest">
+    <img src="https://wikimedia.org" alt="Reggae Sumfest">
   </section>
 
   <section id="people">
     <h2>Famous People</h2>
     <p>Jamaica has given the world legendary figures: Bob Marley, the king of reggae; Usain Bolt, the fastest man alive; Marcus Garvey, a Pan‑African leader; Louise Bennett‑Coverley, poet and folklorist; and Jimmy Cliff, musician and actor. Their influence continues to inspire globally.</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Marcus_Garvey.jpg" alt="Marcus Garvey">
+    <img src="https://wikimedia.org" alt="Marcus Garvey">
   </section>
 
-  <!-- ✈️ Interactive Flight Planner Questionnaire Section -->
-  <section id="planner" class="quiz-container">
+  <!-- ✈️ Safe Planner Setup Attached at the Bottom -->
+  <section id="planner" class="planner-section">
     <h2>📅 Interactive Flight Planner</h2>
-    <p>Planning your journey should be effortless. Use our safe layout tool to instantly locate your recommended arrival airport and filter direct booking engine links.</p>
+    <p>Answer the quick questions below to find your recommended arrival airport and official airline booking links!</p>
     
-    <div id="step1" class="step active">
+    <div id="p-step1" class="planner-step active">
         <h3>Step 1: Where are you staying in Jamaica?</h3>
-        <div class="options">
-            <button class="option-btn" onclick="nextStep(1, 'MBJ')">🏝️ Montego Bay, Negril, or Ocho Rios (Beaches)</button>
-            <button class="option-btn" onclick="nextStep(1, 'KIN')">🏙️ Kingston, Port Royal, or Blue Mountains (Culture/History)</button>
+        <div class="planner-options">
+            <button class="planner-btn" onclick="nextPlannerStep(1, 'MBJ')">🏝️ Montego Bay, Negril, or Ocho Rios</button>
+            <button class="planner-btn" onclick="nextPlannerStep(1, 'KIN')">🏙️ Kingston, Port Royal, or Blue Mountains</button>
+            <button class="planner-btn" onclick="nextPlannerStep(1, 'OCJ')">🌿 Port Antonio or Boscobel</button>
+        </div>
+    </div>
+
+    <div id="p-step2" class="planner-step">
+        <h3>Step 2: Where are you flying from?</h3>
+        <div class="planner-options">
+            <button class="planner-btn" onclick="nextPlannerStep(2, 'NA')">🇺🇸 / 🇨🇦 North America (USA or Canada)</button>
+            <button class="planner-btn" onclick="nextPlannerStep(2, 'EU')">🇬🇧 / 🇪🇺 United Kingdom or Europe</button>
+            <button class="planner-btn" onclick="nextPlannerStep(2, 'CAR')">🌴 Caribbean or Latin America</button>
+        </div>
+    </div>
+
