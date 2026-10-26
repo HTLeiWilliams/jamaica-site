@@ -21,6 +21,9 @@
       background: linear-gradient(to right, #00ff99, #00cc66);
       text-align: center;
       padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     nav a {
       margin: 5px 10px;
@@ -40,13 +43,81 @@
       margin: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      scroll-margin-top: 70px;
     }
     img {
       max-width: 100%;
       height: auto;
       margin: 15px 0;
       border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
+    /* Quiz Layout Styles */
+    .quiz-container {
+      border-top: 6px solid #ffcc00;
+    }
+    .quiz-container h3 {
+      color: #00cc66;
+      margin-top: 0;
+    }
+    .step { display: none; }
+    .step.active { display: block; }
+    .options { margin: 20px 0; }
+    .option-btn {
+      display: block;
+      width: 100%;
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      padding: 15px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: "Trebuchet MS", sans-serif;
+    }
+    .option-btn:hover { background: #eef9f1; border-color: #00cc66; transform: translateY(-2px); }
+    .results-box { background: #fdfdfd; border: 2px dashed #00cc66; padding: 20px; border-radius: 8px; margin-top: 20px; }
+    
+    .result-image-popup {
+      max-width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 15px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      display: block;
+    }
+    .airline-links a { 
+      display: inline-block; 
+      background: #222; 
+      color: #ffffff; 
+      padding: 10px 18px; 
+      margin: 5px; 
+      border-radius: 6px; 
+      text-decoration: none; 
+      font-weight: bold; 
+      font-size: 14px; 
+    }
+    .airline-links a:hover { background: #ffcc00; color: #000; }
+    .learn-more-btn {
+      display: inline-block;
+      background: #00cc66;
+      color: white;
+      padding: 10px 18px;
+      margin: 5px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      font-family: "Trebuchet MS", sans-serif;
+    }
+    .learn-more-btn:hover { background: #00a352; }
+    .warning-box { background: #fff3cd; border-left: 5px solid #ffc107; padding: 15px; margin-top: 15px; border-radius: 4px; font-size: 14px; }
+    .reset-btn { background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin-top: 20px; font-family: "Trebuchet MS", sans-serif; }
   </style>
 </head>
 <body>
@@ -67,6 +138,7 @@
     <a href="#sports">Sports</a>
     <a href="#festivals">Festivals</a>
     <a href="#people">Famous People</a>
+    <a href="#planner" style="background: #ffcc00; color: #222;">Book Trip</a>
   </nav>
 
   <section id="home">
@@ -102,7 +174,7 @@
 
   <section id="food">
     <h2>Food</h2>
-    <p>Jamaican cuisine is bold and flavorful. Famous dishes include Ackee and Saltfish (the national dish), spicy Jerk Chicken, and Jamaican Patties. Tropical fruits like mango, pineapple, and breadfruit are staples. Street food and home cooking alike reflect the island’s diverse heritage.</p>
+    <p>Jamaican cuisine is bold and flavorful. Famous dishes include Ackee and Saltfish (the national dish), spicy Jerk Chicken, and Jamaican Tactics. Tropical fruits like mango, pineapple, and breadfruit are staples. Street food and home cooking alike reflect the island’s diverse heritage.</p>
     <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Jamaican_Jerk_Chicken.jpg" alt="Jerk Chicken">
   </section>
 
@@ -137,10 +209,18 @@
   </section>
 
   <section id="people">
-    <h2>Famous Jamaicans</h2>
+    <h2>Famous People</h2>
     <p>Jamaica has given the world legendary figures: Bob Marley, the king of reggae; Usain Bolt, the fastest man alive; Marcus Garvey, a Pan‑African leader; Louise Bennett‑Coverley, poet and folklorist; and Jimmy Cliff, musician and actor. Their influence continues to inspire globally.</p>
     <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Marcus_Garvey.jpg" alt="Marcus Garvey">
   </section>
-</body>
 
-</html>
+  <!-- ✈️ Interactive Flight Planner Questionnaire Section -->
+  <section id="planner" class="quiz-container">
+    <h2>📅 Interactive Flight Planner</h2>
+    <p>Planning your journey should be effortless. Use our safe layout tool to instantly locate your recommended arrival airport and filter direct booking engine links.</p>
+    
+    <div id="step1" class="step active">
+        <h3>Step 1: Where are you staying in Jamaica?</h3>
+        <div class="options">
+            <button class="option-btn" onclick="nextStep(1, 'MBJ')">🏝️ Montego Bay, Negril, or Ocho Rios (Beaches)</button>
+            <button class="option-btn" onclick="nextStep(1, 'KIN')">🏙️ Kingston, Port Royal, or Blue Mountains (Culture/History)</button>
